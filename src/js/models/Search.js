@@ -8,7 +8,13 @@
 // // Vendor Imports
 import axios from 'axios';
 
-// ?? Main Coontroller takes a search paramater as argument
+import {
+    apiKey
+} from '../config'
+
+
+// ?? All Recipes Search Coontroller takes a query(string) paramater as argument
+// ?? query = string of search input
 export default class Search {
     constructor(query) {
 
@@ -16,13 +22,14 @@ export default class Search {
         this.query = query;
 
         // ^^ Api Key
-        this.key = '1f13d64c7f06a32dafbd3eec085a978a'
+        this.key = apiKey
 
         // ^^ Api Endpoint
         this.endpoint = 'https://www.food2fork.com/api/search?'
     }
 
     // ?? Get Sarch Results for all recipes by query
+    // ?? Takes no arguments
     // ^^ Request to api
     async getResults() {
 

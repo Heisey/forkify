@@ -13,7 +13,8 @@ export const elements = {
     searchInput: document.querySelector('.search__field'),
     searchRes: document.querySelector('.results'),
     searchResList: document.querySelector('.results__list'),
-    searchResPages: document.querySelector('.results__pages')
+    searchResPages: document.querySelector('.results__pages'),
+    recipe: document.querySelector('.recipe')
 }
 
 // ?? Obj of UI strings
@@ -31,7 +32,7 @@ export const elementStrings = {
 export const recipeLI = (ID, title, author, image) => {
     return `
     <li>
-        <a class="results__link results__link--active" href=${ID}>
+        <a class="results__link" href="#${ID}">
             <figure class="results__fig">
                 <img src=${image} alt="${limitText(title)}">
             </figure>
@@ -43,6 +44,7 @@ export const recipeLI = (ID, title, author, image) => {
     </li>
     `
 }
+
 
 // ?? Returns a Generated template string for Loading Animation
 // ?? Takes no arguments
