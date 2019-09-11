@@ -15,7 +15,10 @@ export const elements = {
     searchResList: document.querySelector('.results__list'),
     searchResPages: document.querySelector('.results__pages'),
     recipe: document.querySelector('.recipe'),
-    list: document.querySelector('.shopping__list')
+    list: document.querySelector('.shopping__list'),
+    like: document.querySelector('.recipe__love'),
+    likesMenu: document.querySelector('.likes__field'),
+    likesList: document.querySelector('.likes__list')
 }
 
 // ?? Obj of UI strings
