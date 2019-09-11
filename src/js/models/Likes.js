@@ -11,11 +11,18 @@ export default class Likes {
             img
         }
         this.likes.push(like)
+
+        // ## Save to local storage
+        this.persistData()
+
         return like
     }
 
     deleteLike(id) {
         const index = this.likes.findIndex(el => el.id === id)
+
+        // ## Delete from local storage
+        this.persistData()
 
         this.likes.splice(index, 1)
     }
@@ -26,5 +33,17 @@ export default class Likes {
 
     getNumLikes() {
         return this.likes.length
+    }
+
+    // ?? Save to Local Storage
+    persistData() {
+        localStorage.setItem('likes', JSON.stringify(this.likes))
+    }
+
+    // ?? Read data from Local Storage
+    readStorage() {
+        const storage = JSON.parse(localStorage.getItem('likes'));
+
+        if (storage) this.likes = storage
     }
 }

@@ -56,7 +56,6 @@ const controlSearch = async () => {
     if (query) {
         // ## Render Loading Animation
         renderLoader(elements.searchRes);
-        renderLoader(elements.recipe);
 
         // ^^ Perfom a new Search
         // ## Store Search Class to state
@@ -162,11 +161,6 @@ const controlList = () => {
 }
 // ************** Likes Controller *******************
 
-// !! bug in Code
-state.likes = new Likes()
-LikesView.toggleLikeMenu(state.likes.getNumLikes())
-
-
 const controlLikes = () => {
     const currentID = state.recipe.id
     if (!state.likes) state.likes = new Likes()
@@ -231,7 +225,13 @@ window.addEventListener("hashchange", controlRecipe);
 
 // ?? Global Event Listener for page load
 // ?? Calls the recipe Controller 
-// window.addEventListener('load', controlRecipe);
+window.addEventListener('load', controlRecipe);
+window.addEventListener('load', () => {
+    state.likes = new Likes()
+    state.likes.readStorage();
+    LikesView.toggleLikeMenu(state.likes.getNumLikes())
+    state.likes.likes.forEach(like => LikesView.renderLike(like))
+});
 
 // ?? Event Listener for Serving Count
 // ?? Calls 
